@@ -12,21 +12,21 @@ import java.util.List;
 @Component("registry")
 public class Registry implements IRegistry {
 
-    private List<PatientCard> patientCards;
-    private List<Cabinet> cabinets;
+    private List<IPatientCard> patientCards;
+    private List<ICabinet> cabinets;
 
-    public void setPatientCards(List<PatientCard> patientCards) {
+    public void setPatientCards(List<IPatientCard> patientCards) {
         this.patientCards = patientCards;
     }
 
-    public void setCabinets(List<Cabinet> cabinets) {
+    public void setCabinets(List<ICabinet> cabinets) {
         this.cabinets = cabinets;
     }
 
-    private PatientCard patientCard;
+    private IPatientCard patientCard;
 
     @Autowired
-    public void setPatientCard(PatientCard patientCard) {
+    public void setPatientCard(IPatientCard patientCard) {
         this.patientCard = patientCard;
     }
 
@@ -38,9 +38,9 @@ public class Registry implements IRegistry {
     }
 
     @Override
-    public PatientCard serpCard(String firstName, String lastName) {
+    public IPatientCard serpCard(String firstName, String lastName) {
         if ( patientCards != null && patientCards.size() > 0) {
-            for (PatientCard card : patientCards) {
+            for (IPatientCard card : patientCards) {
                 if (card.getPatient().getFirstName().equals(firstName) &&
                         card.getPatient().getLastName().equals(lastName)) {
                     System.out.println("Пациент " + card.getPatient().getFirstName() + " " +
@@ -53,9 +53,9 @@ public class Registry implements IRegistry {
     }
 
     @Override
-    public Cabinet chooseCabinet(String doctor) {
+    public ICabinet chooseCabinet(String doctor) {
         if (cabinets != null && cabinets.size() > 0) {
-            for (Cabinet cabinet : cabinets) {
+            for (ICabinet cabinet : cabinets) {
                 if (cabinet.getDoctor().getName().equals(doctor)) {
                     System.out.println("Он пошел в " + cabinet.getNumber() +
                             " кабинет к доктору - " + cabinet.getDoctor().getName());

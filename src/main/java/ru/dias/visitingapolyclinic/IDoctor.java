@@ -1,6 +1,6 @@
 package ru.dias.visitingapolyclinic;
 
 public interface IDoctor {
-    void accept();
+    void accept(IPatientCard card);
     String getName();
 }

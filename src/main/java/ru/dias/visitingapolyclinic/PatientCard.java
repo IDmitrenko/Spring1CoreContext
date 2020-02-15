@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(value = "prototype")
-public class PatientCard {
+public class PatientCard implements IPatientCard{
 
     private String adress;
 
@@ -20,6 +20,7 @@ public class PatientCard {
         this.adress = adress;
     }
 
+    @Override
     public Patient getPatient() {
         return patient;
     }

@@ -11,8 +11,8 @@ public class VisitingAPolyclinicApplication {
 
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        List<PatientCard> patientCards;
-        List<Cabinet> cabinets;
+        List<IPatientCard> patientCards;
+        List<ICabinet> cabinets;
 
         cabinets = new ArrayList<>();
         Doctor doctor1 = context.getBean("doctor", Doctor.class);
@@ -73,12 +73,12 @@ public class VisitingAPolyclinicApplication {
         registry.setPatientCards(patientCards);
         registry.setCabinets(cabinets);
 
-        PatientCard card = registry.serpCard("Алексей", "Алексеев");
+        IPatientCard card = registry.serpCard("Алексей", "Алексеев");
         if (card != null) {
             String doctorp = "Невропатолог";
-            Cabinet cabinet = registry.chooseCabinet(doctorp);
+            ICabinet cabinet = registry.chooseCabinet(doctorp);
             if (cabinet != null) {
-                cabinet.getDoctor().accept();
+                cabinet.getDoctor().accept(card);
             }
         }
     }

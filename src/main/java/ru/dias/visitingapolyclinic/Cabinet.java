@@ -21,6 +21,7 @@ public class Cabinet implements ICabinet {
     public Cabinet() {
     }
 
+    @Override
     public int getNumber() {
         return number;
     }
@@ -29,6 +30,7 @@ public class Cabinet implements ICabinet {
         this.number = number;
     }
 
+    @Override
     public IDoctor getDoctor() {
         return doctor;
     }
